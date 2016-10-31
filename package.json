@@ -1,7 +1,7 @@
 {
   "name": "es6module",
   "version": "0.1.0",
-  "description": "Oblique performer on gpu",
+  "description": "A starting point to create ES6 module for browser",
   "main": "src/es6module.js",
   "moduleName": "ES6MOD",
   "moduleFormat": "umd",
