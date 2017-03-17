@@ -5,18 +5,23 @@
   "main": "src/es6module.js",
   "moduleName": "ES6MOD",
   "moduleFormat": "umd",
-  "moduleBuildDir": "build",
+  "moduleBuildDir": "dist",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
+    "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/es6module.min.js && cat header.txt >> dist/es6module.min.js && google-closure-compiler-js dist/es6module.js >> dist/es6module.min.js",
     "doc": "documentation build -o ./doc/ -f html"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
   "devDependencies": {
-    "documentation": "^4.0.0-beta11",
+    "documentation": "^3.0.4",
+    "google-closure-compiler-js": "^20170218.0.0",
     "gulp": "^3.9.1",
-    "gulp-rollup": "^2.5.1",
-    "rollup": "^0.36.3"
+    "gulp-rollup": "^2.11.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "rollup": "^0.36.4",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0"
   }
 }

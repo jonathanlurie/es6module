@@ -4,6 +4,14 @@
   (factory((global.ES6MOD = global.ES6MOD || {})));
 }(this, (function (exports) { 'use strict';
 
+/*
+* Author    Jonathan Lurie - http://me.jonahanlurie.fr
+* License   MIT
+* Link      https://github.com/jonathanlurie/es6module
+* Lab       MCIN - http://mcin.ca/ - Montreal Neurological Institute
+*/
+
+
 /** Class representing a foo. */
 class Foo {
 
@@ -38,7 +46,7 @@ class Foo {
   * @return {number} The anAttribute value.
   */
   getAnAttribute(){
-    return this.anAttribute;
+    return this.anAttribute; 
   }
 
 }
@@ -53,3 +61,4 @@ exports.Foo = Foo;
 Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
+//# sourceMappingURL=es6module.js.map

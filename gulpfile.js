@@ -1,10 +1,11 @@
 /* File: gulpfile.js */
 
 // grab our gulp packages
-var gulp  = require('gulp'),
-    gutil = require('gulp-util'),
+var gulp       = require('gulp'),
+    gutil      = require('gulp-util'),
     rollup     = require('gulp-rollup'),
-    config = require('./package.json');
+    sourcemaps = require('gulp-sourcemaps'),
+    config     = require('./package.json');
 
 // create a default task and just log a message
 gulp.task('default', function() {
@@ -17,15 +18,18 @@ gulp.task('default', function() {
 gulp.task('bundle', function() {
 
   gulp.src('./src/**/*.js')
+  .pipe(sourcemaps.init())
   // transform the files here.
   .pipe(rollup({
     // any option supported by Rollup can be set here.
     entry: config.main,//'./src/es6module.js',
     format: config.moduleFormat, //'umd',
-    moduleName: config.moduleName //'ES6MOD',
+    moduleName: config.moduleName, //'ES6MOD',
+    //dest: config.moduleBuildDir + '/' + config.moduleName + '.js',
   }))
 
-  .pipe(gulp.dest('./' + config.moduleBuildDir + '/' + config.name));
+  .pipe(sourcemaps.write("."))
+  .pipe(gulp.dest(config.moduleBuildDir));
 
   return gutil.log('Building source bundle...')
 });

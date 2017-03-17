@@ -1,3 +1,10 @@
+/*
+* Author    Jonathan Lurie - http://me.jonahanlurie.fr
+* License   MIT
+* Link      https://github.com/jonathanlurie/es6module
+* Lab       MCIN - http://mcin.ca/ - Montreal Neurological Institute
+*/
+
 
 /** Class representing a foo. */
 class Foo {
@@ -33,7 +40,7 @@ class Foo {
   * @return {number} The anAttribute value.
   */
   getAnAttribute(){
-    return this.anAttribute;
+    return this.anAttribute; 
   }
 
 }
