@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/es6module.min.js && cat header.txt >> dist/es6module.min.js && google-closure-compiler-js dist/es6module.js >> dist/es6module.min.js",
-    "doc": "documentation build -o ./doc/ -f html"
+    "doc": "documentation src/es6module.js -o ./doc/ -f html"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
