@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A starting point to create ES6 module for browser",
   "main": "src/es6module.js",
+  "repository": "jonathanlurie/es6module",
   "moduleName": "ES6MOD",
   "moduleFormat": "umd",
   "moduleBuildDir": "dist",
