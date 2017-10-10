@@ -15,10 +15,10 @@ export default [
     moduleName: pkg.moduleName,
     sourceMap: true,
     plugins: [
-      globals(),
-      builtins(),
       resolve(), // so Rollup can find `ms`
-      commonjs() // so Rollup can convert other modules to ES module
+      commonjs({ include: 'node_modules/**' }), // so Rollup can convert other modules to ES module
+      globals(),
+      builtins()
     ]
   },
 
