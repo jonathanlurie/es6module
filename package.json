@@ -7,7 +7,7 @@
   "entry": "src/main.js",
   "main": "dist/es6module.cjs.es5.js",
   "commonjs": "dist/es6module.cjs.js",
-  "module": "dist/es6module.esm.js",
+  "module": "dist/es6module.module.js",
   "browser": "dist/es6module.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
