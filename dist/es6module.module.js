@@ -1,7 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -208,4 +204,4 @@ var Foo = function () {
 
 // but we just want to make it accessible:
 
-exports.Foo = Foo;
+export { Foo };
