@@ -2,4 +2,4 @@
 //import foo from './foo.js';
 
 // but we just want to make it accessible:
-export { Foo } from './Foo.js';
+export { Foo } from './Foo.js'; 

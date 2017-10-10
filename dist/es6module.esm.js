@@ -1,9 +1,3 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.ES6MOD = global.ES6MOD || {})));
-}(this, (function (exports) { 'use strict';
-
 /*
 * Author    Jonathan Lurie - http://me.jonahanlurie.fr
 * License   MIT
@@ -56,9 +50,4 @@ class Foo {
 
 // but we just want to make it accessible:
 
-exports.Foo = Foo;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-//# sourceMappingURL=es6module.js.map
+export { Foo };

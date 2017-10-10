@@ -2,27 +2,33 @@
   "name": "es6module",
   "version": "0.1.0",
   "description": "A starting point to create ES6 module for browser",
-  "main": "src/es6module.js",
   "repository": "jonathanlurie/es6module",
-  "moduleName": "ES6MOD",
-  "moduleFormat": "umd",
-  "moduleBuildDir": "dist",
+  "moduleName": "es6module",
+  "entry": "src/main.js",
+  "main": "dist/es6module.cjs.es5.js",
+  "commonjs": "dist/es6module.cjs.js",
+  "module": "dist/es6module.esm.js",
+  "browser": "dist/es6module.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
-    "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/es6module.min.js && cat header.txt >> dist/es6module.min.js && google-closure-compiler-js dist/es6module.js >> dist/es6module.min.js",
-    "doc": "documentation src/es6module.js -o ./doc/ -f html"
+    "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/es6module.umd.min.js && cat header.txt >> dist/es6module.umd.min.js && google-closure-compiler-js dist/es6module.umd.js >> dist/es6module.umd.min.js",
+    "doc": "documentation src/main.js -o ./doc/ -f html"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "documentation": "^3.0.4",
     "google-closure-compiler-js": "^20170218.0.0",
-    "gulp": "^3.9.1",
-    "gulp-rollup": "^2.11.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "rollup": "^0.36.4",
+    "rollup": "^0.46.0",
+    "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^2.0.0"
-  }
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0"
+  },
+  "dependencies": {}
 }
