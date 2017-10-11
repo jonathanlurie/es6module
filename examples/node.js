@@ -1,6 +1,6 @@
-const ES6MOD = require("../dist/es6module.cjs.js");
+const es6module = require("../dist/es6module.cjs.js");
 
-var foo = new ES6MOD.Foo(20, 30);
+var foo = new es6module.Foo(20, 30);
 
 // do something with foo
 foo.printAnAttribute();
