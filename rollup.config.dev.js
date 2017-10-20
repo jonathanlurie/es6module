@@ -1,4 +1,4 @@
-var config = require('./package.json');
+import pkg from './package.json';
 
 /*
     The dev version of the Rollup config does not transpile to ES5
@@ -14,12 +14,12 @@ import globals from 'rollup-plugin-node-globals';
 
 export default [
   {
-    input: config.entry,
+    input: pkg.entry,
     output: {
-      file: config.moduleBuildDir + '/' + config.moduleName + '.js',
+      file: pkg.browser,
       format: 'umd'
     },
-    name: config.moduleName,
+    name: pkg.moduleName,
     sourcemap: true,
     plugins: [
       nodeResolve({
