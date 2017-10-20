@@ -1,9 +1,3 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.es6module = {})));
-}(this, (function (exports) { 'use strict';
-
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -210,9 +204,4 @@ var Foo = function () {
 
 // but we just want to make it accessible:
 
-exports.Foo = Foo;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-//# sourceMappingURL=es6module.umd.js.map
+export { Foo };

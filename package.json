@@ -14,7 +14,8 @@
     "build": "rollup -c",
     "dev": "serve . & rollup -w -c rollup.config.dev.js",
     "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/es6module.umd.min.js && cat header.txt >> dist/es6module.umd.min.js && google-closure-compiler-js dist/es6module.umd.js >> dist/es6module.umd.min.js",
-    "doc": "documentation src/main.js -o ./doc/ -f html"
+    "doc": "documentation src/main.js -o ./doc/ -f html",
+    "all" : "npm run build; npm run build-min; npm run doc"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
