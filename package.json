@@ -5,7 +5,7 @@
   "repository": "jonathanlurie/es6module",
   "moduleName": "es6module",
   "entry": "src/main.js",
-  "main": "dist/es6module.cjs.es5.js",
+  "main": "dist/es6module.cjs.js",
   "commonjs": "dist/es6module.cjs.js",
   "module": "dist/es6module.module.js",
   "browser": "dist/es6module.umd.js",
