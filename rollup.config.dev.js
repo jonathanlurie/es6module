@@ -17,10 +17,11 @@ export default [
     input: pkg.entry,
     output: {
       file: pkg.browser,
+      name: pkg.moduleName,
+      sourcemap: true,
       format: 'umd'
     },
-    name: pkg.moduleName,
-    sourcemap: true,
+    
     plugins: [
       nodeResolve({
         preferBuiltins: false
