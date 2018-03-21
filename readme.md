@@ -86,3 +86,29 @@ Use the [JSDoc](http://usejsdoc.org/) syntax and then run:
 $ npm run doc
 ```
 Two kinds of documentations will be generated: a HTML kind in `doc/` and a markdown kind in `./documentation.md`.
+
+# Extra
+Since I clone this repo a lot and use it as a start for almost every new project, I decided to create a script to:
+- clone (with depth=1)
+- remove the `.git` folder
+- remove files and folder that are going to be replaced anyway (doc, dist bundles)
+- replace the every "es6module" by "mynewfancymodule"
+- removes readme's content
+- run `npm install`
+
+```bash
+function es6module(){
+  git clone --depth=1 --branch=master https://github.com/jonathanlurie/es6module.git  $1
+  cd $1
+  rm -rf .git
+  rm -rf dist/* documentation.md doc/* package-lock.json
+  find . -type f -iname '*' -exec sed -i '' "s/es6module/$1/g" "{}" +;
+  printf "# $1\n[here goes the readme]\n" > readme.md
+  npm install
+}
+```
+
+Copy the script to the `.bashrc` and to run it:
+```bash
+es6module mynewfancymodule
+```
