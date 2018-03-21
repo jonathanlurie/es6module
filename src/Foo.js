@@ -1,16 +1,10 @@
-/*
-* Author    Jonathan Lurie - http://me.jonathanlurie.fr
-* License   MIT
-* Link      https://github.com/jonathanlurie/es6module
-* Lab       MCIN - http://mcin.ca/ - Montreal Neurological Institute
-*/
-
-
-/** Class representing a foo. */
+/**
+ * This class is for Foo
+ */
 class Foo {
 
   /**
-   * Create a foo.
+   * Creates a foo.
    * @param {number} anAttribute - a value.
    * @param {number} aSecondAttribute - another value.
    */
@@ -40,7 +34,7 @@ class Foo {
   * @return {number} The anAttribute value.
   */
   getAnAttribute(){
-    return this.anAttribute; 
+    return this.anAttribute;
   }
 
 }

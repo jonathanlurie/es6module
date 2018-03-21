@@ -1,4 +1,4 @@
-const es6module = require("../dist/es6module.cjs.js");
+const es6module = require("..");
 
 var foo = new es6module.Foo(20, 30);
 

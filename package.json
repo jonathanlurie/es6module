@@ -5,34 +5,28 @@
   "repository": "jonathanlurie/es6module",
   "moduleName": "es6module",
   "entry": "src/main.js",
-  "main": "dist/es6module.cjs.js",
-  "commonjs": "dist/es6module.cjs.js",
-  "module": "dist/es6module.module.js",
-  "browser": "dist/es6module.umd.js",
+  "main": "dist/es6module.js",
+  "min": "dist/es6module.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "serve . & rollup -w -c rollup.config.dev.js",
-    "build-min": "npm run build ; google-closure-compiler-js dist/es6module.umd.js >> dist/es6module.umd.min.js",
-    "doc": "documentation build src/main.js -o ./doc/ -f html; documentation build src/** -f md > documentation.md",
-    "all": "npm run build; npm run build-min; npm run doc",
-    "update": "npm i -g npm-check-updates; ncu -u; npm install"
+    "doc": "documentation build src/main.js -o ./doc/ -f html; documentation build src/** -f md > documentation.md"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-es2015-rollup": "^3.0.0",
-    "documentation": "^6.1.0",
-    "google-closure-compiler-js": "^20180204.0.0",
     "rollup": "^0.57.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "documentation": "^6.1.0",
     "serve": "^6.3.1"
-  },
-  "dependencies": {}
+  }
 }

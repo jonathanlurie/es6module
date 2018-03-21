@@ -1,3 +1,9 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.es6module = {})));
+}(this, (function (exports) { 'use strict';
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -84,5 +90,8 @@ var Foo = function () {
 
 // if we wanted to use foo here:
 
-export { Foo };
-//# sourceMappingURL=es6module.module.js.map
+exports.Foo = Foo;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
