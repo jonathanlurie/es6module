@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
-    "dev": "serve . & rollup -w -c rollup.config.dev.js",
+    "dev": "serve -l 5002 . & rollup -w -c rollup.config.dev.js",
     "doc": "documentation build src/main.js -o ./doc/ -f html; documentation build src/** -f md > documentation.md",
     "lintfix": "standard --fix src/**/*.js",
     "lint": "standard src/**/*.js"
@@ -18,18 +18,18 @@
   "author": "Jonathan Lurie",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "documentation": "^6.1.0",
-    "rollup": "^0.57.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^9.1.0",
+    "documentation": "^8.1.2",
+    "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.1.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "serve": "^6.3.1",
-    "standard": "^11.0.1"
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-uglify": "^5.0.2",
+    "serve": "^10.0.0",
+    "standard": "^12.0.1"
   }
 }
