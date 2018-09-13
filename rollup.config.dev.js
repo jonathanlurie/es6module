@@ -5,12 +5,10 @@ import pkg from './package.json';
     and outputs a single umd package.
 */
 
-import commonjs from 'rollup-plugin-commonjs';
-import nodeResolve from 'rollup-plugin-node-resolve';
-//import bundleWorker from 'rollup-plugin-bundle-worker';
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
-
+import commonjs from 'rollup-plugin-commonjs'
+import nodeResolve from 'rollup-plugin-node-resolve'
+import builtins from 'rollup-plugin-node-builtins'
+import globals from 'rollup-plugin-node-globals'
 
 export default [
   {
@@ -27,9 +25,8 @@ export default [
         preferBuiltins: false
       }),
       commonjs(),
-      //bundleWorker(),
       globals(),
       builtins()
     ]
   }
-];
+]
