@@ -111,4 +111,4 @@ es6module mynewfancymodule
 ```
 
 # TODO
-- add a testing framework
+- Add a testing framework
