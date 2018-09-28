@@ -12,7 +12,6 @@
     "build": "NODE_ENV=production rollup -c",
     "dev": "serve -l $(((RANDOM%3000)+3000)) . & NODE_ENV=development rollup -w -c",
     "doc": "documentation build src/index.js -o ./doc/ -f html; documentation build src/** -f md > documentation.md",
-    "lintfix": "standard --fix src/**/*.js",
     "lint": "eslint src"
   },
   "author": "Jonathan Lurie",

@@ -34,6 +34,18 @@ $ npm run build
 ```
 This builds all the 4 outputs.
 
+# Lint
+Es6modules uses eslint and the set of rules defined by [Airbnb](https://github.com/airbnb/javascript) + some minor adjustments.  
+Run the linter to simply display errors and warnings:
+```bash
+$ npm run lint
+```
+
+To fix:
+```bash
+$ npm run lint -- --fix
+```
+
 # How to use my module?
 The advantage of the *umd* package specification is that it's compatible everywhere: Node, Browser and ES6 import.
 
@@ -97,3 +109,6 @@ Copy the script to the `.bashrc` and to run it:
 ```bash
 es6module mynewfancymodule
 ```
+
+# TODO
+- add a testing framework
