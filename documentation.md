@@ -3,26 +3,28 @@
 ### Table of Contents
 
 -   [Foo][1]
-    -   [setAnAttribute][2]
-    -   [printAnAttribute][3]
-    -   [getAnAttribute][4]
+    -   [Parameters][2]
+    -   [setAnAttribute][3]
+        -   [Parameters][4]
+    -   [printAnAttribute][5]
+    -   [getAnAttribute][6]
 
 ## Foo
 
-Class representing a foo.
+This class is for Foo
 
-**Parameters**
+### Parameters
 
--   `anAttribute` **[number][5]** a value.
--   `aSecondAttribute` **[number][5]** another value. (optional, default `10`)
+-   `anAttribute` **[number][7]** a value.
+-   `aSecondAttribute` **[number][7]** another value. (optional, default `10`)
 
 ### setAnAttribute
 
 Set anAttribute.
 
-**Parameters**
+#### Parameters
 
--   `a` **[number][5]** the value to give to anAttribute.
+-   `a` **[number][7]** the value to give to anAttribute.
 
 ### printAnAttribute
 
@@ -30,14 +32,18 @@ Display anAttribute.
 
 ### getAnAttribute
 
-Returns **[number][5]** The anAttribute value.
+Returns **[number][7]** The anAttribute value.
 
 [1]: #foo
 
-[2]: #setanattribute
+[2]: #parameters
 
-[3]: #printanattribute
+[3]: #setanattribute
 
-[4]: #getanattribute
+[4]: #parameters-1
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[5]: #printanattribute
+
+[6]: #getanattribute
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

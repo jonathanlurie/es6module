@@ -1,53 +1,38 @@
 # What is es6module ?
-It's a simple module architecture using [Rollup](http://rollupjs.org) to bundle the code in one single source file. The purpose is to use your module in a browser with a single import.  
+This is a starting point for a JS library (not a frontend framework-based thing)
+It's a simple module architecture using [Rollup](http://rollupjs.org) to bundle the code in one single source file. There will be three output bundles, in three directories:
+- `dist`, with a **umd** bundle and its *minified* equivalent (bundles with dependencies if there is any)
+- `lib`, with a **commonjs** bundle, mostly for Node usage (does not bundle with dependencies)
+- `es`, with a **es module** bundle, mostly for ES usage (does not bundle with dependencies)
 
-This module contains a [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) example: `Foo`. This class is then imported by the project entry-point: `src/main.js`, using the ES6 import style.
+None of these is transpiled into *ES5* and this package does not use Babel.
 
 Code documentation can also be generated thanks to [Documentation.js](http://documentation.js.org/) that uses the [JSDoc](http://usejsdoc.org/) syntax.
 
 ## Using es6module as a base
 **es6module** is not made to be used as-is, but rather to be a starting-point/boilerplate to make your own module. Here is the list of things to change to make it yours:
 
-The entry-point of the module is `src/main.js`, of course, you should rename this file with the name of your choice.
+The entry-point of the module is `src/index.js`, of course, you should rename this file with the name of your choice.
 
-In `package.json` file, you can edit:
-- `name`, should be the one of your choice (lower case, possibly with dashes)
-- `version` better to manage it with `npm version XXX`
-- `description` with the description of what your project does
-- `main` just update the name of the generated bundle, but keep the one produced in `dist/`
-- `min` the minified version of the `main` source, also in `dist/`
-- `author` your name
-- `license` you can keep MIT of take another one
+In `package.json` file, look for the string `es6module` and change all its occurrence with the name of your choice. The file `rollup.config.js` does not need any edits because it uses variables from `package.json`.
 
-
-## Adding custom classes
-As you can see in `src/main.js`, we import the file `Foo.js`. **Foo** uses the ES6 class notation but alternatively, your custom classes can use the *prototype* kind of declaration. What matters is to export your class or function, like in the very last line of `Foo.js`.
+Some usage examples are provided in the `examples/` folder.
 
 # Dev mode
-Rollup provides a *watch* mode that can be coupled with *serve*. To launch it:
 ```bash
 $ npm run dev
 ```
-
-This actually calls `rollup -c` with the config file `rollup.config.dev.js`.
+Does:
+- watches for source modifications
+- makes all except the minified umd bundle
+- serves on a `http://localhost:PORT/` where `PORT` is a random number in [3000, 6000]. This is copied into the clipboard
 
 # Build your module
-An ES6 module can be composed of as many source files as you wish, but in the end, they will all be smartly concatenated into a single *js* bundle.
-
-The purpose of building is to have a single *js* source file used in external projects, that contains all the modules. The default is to put it in the `/dist/` directory.
-Two alternative ways are possible here, they produce the same result:
-
-1. Using Rollup from the script:  
+Using Rollup from the script:  
 ```bash
 $ npm run build
 ```
-This actually calls `rollup -c`, that reads its necessary setting from `rollup.config.js`.
-
-There difference between `npm run build` and `npm run dev` are:
-- `build` transpiles the source into ES5 for better compatibility
-- `build` creates 2 files: the regular ES5 bundle and the minified bundle
-- `dev` watches and launches a local server
-- `dev` updates the codemap for easier debugging
+This builds all the 4 outputs.
 
 # How to use my module?
 The advantage of the *umd* package specification is that it's compatible everywhere: Node, Browser and ES6 import.
@@ -88,7 +73,7 @@ $ npm run doc
 Two kinds of documentations will be generated: a HTML kind in `doc/` and a markdown kind in `./documentation.md`.
 
 # Extra
-Since I clone this repo a lot and use it as a start for almost every new project, I decided to create a script to:
+Since I clone this repo a lot and use it as a start for almost every new project, I've decided to create a script to:
 - clone (with depth=1)
 - remove the `.git` folder
 - remove files and folder that are going to be replaced anyway (doc, dist bundles)

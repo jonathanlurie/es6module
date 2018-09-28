@@ -8,9 +8,9 @@ class Foo {
    * @param {number} aSecondAttribute - another value.
    */
   constructor(anAttribute, aSecondAttribute = 10) {
-    this.anAttribute = anAttribute
-    this.aSecondAttribute = aSecondAttribute
-    console.log('a foo is constructed')
+    this.anAttribute = anAttribute;
+    this.aSecondAttribute = aSecondAttribute;
+    console.log('a foo is constructed');
   }
 
   /**
@@ -18,15 +18,15 @@ class Foo {
    * @param {number} a - the value to give to anAttribute.
    */
   setAnAttribute(a) {
-    this.anAttribute = a
-    console.log('calling setAnAttribute()')
+    this.anAttribute = a;
+    console.log('calling setAnAttribute()');
   }
 
   /**
    * Display anAttribute.
    */
   printAnAttribute() {
-    console.log(this.anAttribute)
+    console.log(this.anAttribute);
   }
 
   /**
@@ -37,4 +37,9 @@ class Foo {
   }
 }
 
-export default Foo
+var index = ({
+  Foo,
+});
+
+export default index;
+//# sourceMappingURL=es6module.js.map
