@@ -82,7 +82,7 @@ Use the [JSDoc](http://usejsdoc.org/) syntax and then run:
 ```bash
 $ npm run doc
 ```
-Two kinds of documentations will be generated: a HTML kind in `doc/` and a markdown kind in `./documentation.md`.
+Two kinds of documentations will be generated: a HTML kind in `doc/` ([here](http://me.jonathanlurie.fr/es6module/doc/)) and a markdown kind in `./documentation.md` ([here](https://github.com/jonathanlurie/es6module/blob/master/documentation.md)).
 
 # Extra
 Since I clone this repo a lot and use it as a start for almost every new project, I've decided to create a script to:
