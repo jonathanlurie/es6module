@@ -55,5 +55,8 @@
         "warn"
       ]
     }
+  },
+  "dependencies": {
+    "rollup-plugin-webworkify": "0.0.4"
   }
 }

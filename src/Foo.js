@@ -1,3 +1,5 @@
+import BarWorker from 'worker#./Bar.worker.js'
+
 /**
  * This class is for Foo
  */
@@ -11,6 +13,13 @@ class Foo {
     this.anAttribute = anAttribute
     this.aSecondAttribute = aSecondAttribute
     console.log('a foo is constructed')
+
+
+    let barWorker = new BarWorker()
+    barWorker.addEventListener('message', function (e) {
+      console.log(e.data)
+    })
+    barWorker.postMessage("PING from the main thread")
   }
 
   /**

@@ -1,3 +1,5 @@
+[WIP experimental support for WebWorkers]
+
 # What is es6module ?
 This is a starting point for a JS library (not a frontend framework-based thing)
 It's a simple module architecture using [Rollup](http://rollupjs.org) to bundle the code in one single source file. There will be three output bundles, in three directories:

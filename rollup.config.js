@@ -1,10 +1,10 @@
-import pkg from './package.json'
-import { terser } from "rollup-plugin-terser"
+import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import builtins from 'rollup-plugin-node-builtins'
 import globals from 'rollup-plugin-node-globals'
 import commonjs from 'rollup-plugin-commonjs'
-
+import webworkify from 'rollup-plugin-webworkify'
+import pkg from './package.json'
 
 const configurations = [
   // UMD
@@ -20,39 +20,41 @@ const configurations = [
       resolve(),
       commonjs({ include: 'node_modules/**' }),
       globals(),
-      builtins()
-    ]
+      builtins(),
+      webworkify({ pattern: '**/*.worker.js' }),
+    ],
   },
 
   // ESMODULE
-   {
-     input: pkg.entry,
-     output: {
-       file: pkg.module,
-       name: pkg.name,
-       sourcemap: true,
-       format: 'es'
-     },
-     external: [
-       ...Object.keys(pkg.dependencies || {}),
-     ],
-     plugins: [
-       resolve(),
-       commonjs({ include: 'node_modules/**' }),
-       globals(),
-       builtins()
-     ]
-   },
+  {
+    input: pkg.entry,
+    output: {
+      file: pkg.module,
+      name: pkg.name,
+      sourcemap: true,
+      format: 'es',
+    },
+    external: [
+      ...Object.keys(pkg.dependencies || {}),
+    ],
+    plugins: [
+      resolve(),
+      commonjs({ include: 'node_modules/**' }),
+      globals(),
+      builtins(),
+      webworkify({ pattern: '**/*.worker.js' }),
+    ],
+  },
 
 
-   // CJS
+  // CJS
   {
     input: pkg.entry,
     output: {
       file: pkg.main,
       name: pkg.name,
       sourcemap: true,
-      format: 'cjs'
+      format: 'cjs',
     },
     external: [
       ...Object.keys(pkg.dependencies || {}),
@@ -62,31 +64,33 @@ const configurations = [
       resolve(),
       commonjs({ include: 'node_modules/**' }),
       globals(),
-      builtins()
-    ]
-  }
+      builtins(),
+      webworkify({ pattern: '**/*.worker.js' }),
+    ],
+  },
 
 ]
 
 
 // Adding the minified umd bundle
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   configurations.push(
-  {
-    input: pkg.entry,
-    output: {
-      file: pkg.unpkg.replace(".js", '.min.js'),
-      name: pkg.name,
-      sourcemap: false,
-      format: 'umd',
-    },
-    plugins: [
-      resolve(),
-      commonjs({ include: 'node_modules/**' }),
-      globals(),
-      builtins(),
-      terser()]
-  })
+    {
+      input: pkg.entry,
+      output: {
+        file: pkg.unpkg.replace('.js', '.min.js'),
+        name: pkg.name,
+        sourcemap: false,
+        format: 'umd',
+      },
+      plugins: [
+        resolve(),
+        commonjs({ include: 'node_modules/**' }),
+        globals(),
+        builtins(),
+        webworkify({ pattern: '**/*.worker.js' }),
+        terser()],
+    })
 }
 
 export default configurations
