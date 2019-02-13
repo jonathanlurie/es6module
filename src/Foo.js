@@ -13,14 +13,8 @@ class Foo {
     this.anAttribute = anAttribute
     this.aSecondAttribute = aSecondAttribute
     console.log('a foo is constructed')
-
-
-    let barWorker = new BarWorker()
-    barWorker.addEventListener('message', function (e) {
-      console.log(e.data)
-    })
-    barWorker.postMessage("PING from the main thread")
   }
+
 
   /**
    * Set anAttribute.
@@ -43,6 +37,35 @@ class Foo {
   */
   getAnAttribute() {
     return this.anAttribute
+  }
+
+
+  /**
+   * This calls a pretty classic web worker, from a file in the folder 'example'.
+   * Inside this worker, we import a script from yet another file.
+   */
+  testWorker01() {
+    let myFooWorker = new Worker("workers/Foo.worker.js")
+
+    myFooWorker.postMessage('PING from the main thread')
+
+    myFooWorker.onmessage = function(e) {
+      console.log(e.data)
+    }
+  }
+
+
+  /**
+   * Here we create a worker that is encapsulated in the final bundle. In some case,
+   * it can be more convenient but the limitation is that we cannot import scripts
+   * from this worker, which is very limiting
+   */
+  testWorker02() {
+    let barWorker = new BarWorker()
+    barWorker.addEventListener('message', function (e) {
+      console.log(e.data)
+    })
+    barWorker.postMessage("PING from the main thread")
   }
 }
 

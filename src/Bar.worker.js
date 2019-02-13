@@ -1,10 +1,10 @@
 /**
- * In this webworker, we send a message to the main thread every half second,
+ * In this webworker, we send a message to the main thread every half second
  */
 
 // the worker code lies in the export instruction
 function Bar(self) {
-  
+
   setInterval(function () {
     self.postMessage('A message sent by the worker on a regular interval')
   }, 500)

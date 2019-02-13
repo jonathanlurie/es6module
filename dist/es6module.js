@@ -5,7 +5,7 @@
 }(this, (function () { 'use strict';
 
   /*! rollup-plugin-webworkify/workerhelper.js v0.0.4 | MIT Licensed | Allex Wang <allex.wxn@gmail.com> */
-  var win = window, BlobBuilder = win.BlobBuilder || win.WebKitBlobBuilder || win.MozBlobBuilder || win.MSBlobBuilder, URL = win.URL || win.webkitURL || win.mozURL || win.msURL, SCRIPT_TYPE = "application/javascript", TARGET = "undefined" == typeof Symbol ? "__t" + +new Date() : Symbol(), Worker = win.Worker, nextTick = win.setImmediate || function(e) {
+  var win = window, BlobBuilder = win.BlobBuilder || win.WebKitBlobBuilder || win.MozBlobBuilder || win.MSBlobBuilder, URL = win.URL || win.webkitURL || win.mozURL || win.msURL, SCRIPT_TYPE = "application/javascript", TARGET = "undefined" == typeof Symbol ? "__t" + +new Date() : Symbol(), Worker$1 = win.Worker, nextTick = win.setImmediate || function(e) {
     return setTimeout(e, 1);
   };
 
@@ -13,9 +13,9 @@
     return function r(n) {
       var o = this;
       if (!(o instanceof r)) return new r(n);
-      if (!t) return new Worker(e);
-      if (Worker && !n) {
-        var i = createSourceObject(';(function(f){f&&new(f.default?f["default"]:f)(self)}((' + t.toString() + ")()))"), a = new Worker(i);
+      if (!t) return new Worker$1(e);
+      if (Worker$1 && !n) {
+        var i = createSourceObject(';(function(f){f&&new(f.default?f["default"]:f)(self)}((' + t.toString() + ")()))"), a = new Worker$1(i);
         return URL.revokeObjectURL(i), o[TARGET] = a;
       }
       var c = new WorkerEmitter({
@@ -71,13 +71,13 @@
     }, e;
   }
 
-  if (Worker) {
+  if (Worker$1) {
     var testWorker, objURL = createSourceObject("self.onmessage = function () {}"), testArray = new Uint8Array(1);
     try {
       if (/(?:Trident|Edge)\/(?:[567]|12)/i.test(navigator.userAgent)) throw new Error("Not available");
-      (testWorker = new Worker(objURL)).postMessage(testArray, [ testArray.buffer ]);
+      (testWorker = new Worker$1(objURL)).postMessage(testArray, [ testArray.buffer ]);
     } catch (e) {
-      Worker = null;
+      Worker$1 = null;
     } finally {
       URL.revokeObjectURL(objURL), testWorker && testWorker.terminate();
     }
@@ -97,12 +97,12 @@
 
   var BarWorker = workerCtor('worker#./Bar.worker.js', function() { return (function(e,r){return e(r={exports:{}},r.exports),r.exports})(function (module, exports) {
     /**
-   * In this webworker, we send a message to the main thread every half second,
+   * In this webworker, we send a message to the main thread every half second
    */
 
   // the worker code lies in the export instruction
   function Bar(self) {
-    
+
     setInterval(function () {
       self.postMessage('A message sent by the worker on a regular interval');
     }, 500);
@@ -130,14 +130,8 @@
       this.anAttribute = anAttribute;
       this.aSecondAttribute = aSecondAttribute;
       console.log('a foo is constructed');
-
-
-      let barWorker = new BarWorker();
-      barWorker.addEventListener('message', function (e) {
-        console.log(e.data);
-      });
-      barWorker.postMessage("PING from the main thread");
     }
+
 
     /**
      * Set anAttribute.
@@ -160,6 +154,35 @@
     */
     getAnAttribute() {
       return this.anAttribute
+    }
+
+
+    /**
+     * This calls a pretty classic web worker, from a file in the folder 'example'.
+     * Inside this worker, we import a script from yet another file.
+     */
+    testWorker01() {
+      let myFooWorker = new Worker("workers/Foo.worker.js");
+
+      myFooWorker.postMessage('PING from the main thread');
+
+      myFooWorker.onmessage = function(e) {
+        console.log(e.data);
+      };
+    }
+
+
+    /**
+     * Here we create a worker that is encapsulated in the final bundle. In some case,
+     * it can be more convenient but the limitation is that we cannot import scripts
+     * from this worker, which is very limiting
+     */
+    testWorker02() {
+      let barWorker = new BarWorker();
+      barWorker.addEventListener('message', function (e) {
+        console.log(e.data);
+      });
+      barWorker.postMessage("PING from the main thread");
     }
   }
 
