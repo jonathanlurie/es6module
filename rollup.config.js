@@ -1,8 +1,8 @@
 import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
+import resolve from '@rollup/plugin-node-resolve'
 import builtins from 'rollup-plugin-node-builtins'
 import globals from 'rollup-plugin-node-globals'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import webworkify from 'rollup-plugin-webworkify'
 import pkg from './package.json'
 
@@ -18,7 +18,7 @@ const configurations = [
   {
     input: pkg.entry,
     output: {
-      file: pkg.unpkg,
+      file: pkg.browser,
       name: packageName,
       sourcemap: true,
       format: 'umd',
@@ -72,7 +72,7 @@ const configurations = [
       commonjs({ include: 'node_modules/**' }),
       globals(),
       builtins(),
-      webworkify({ pattern: '**/*.worker.js' }),
+      // webworkify({ pattern: '**/*.worker.js' }),
     ],
   },
 
@@ -85,7 +85,7 @@ if (process.env.NODE_ENV === 'production') {
     {
       input: pkg.entry,
       output: {
-        file: pkg.unpkg.replace('.js', '.min.js'),
+        file: pkg.browser.replace('.js', '.min.js'),
         name: packageName,
         sourcemap: false,
         format: 'umd',
